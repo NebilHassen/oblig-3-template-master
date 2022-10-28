@@ -7,7 +7,8 @@ Oppgaven er levert av følgende student:
 
 # Oppgavebeskrivelse
 
-Mye av oppgave 1 kommer fra tipset gitt i oppgaven, 5.2.3a)
+Mye av oppgave 1 kommer fra tipset gitt i oppgaven, 5.2.3a).
+
 I oppgave 1 så gikk jeg frem ved å instansiere noden p som rotnoden, og noden q som en tom hjelpenode (og videre en sammenligningsvariabel, kalt sammenlign).
 Her så angir jeg i en while-løkke at så lenge rotnoden ikke er tom så blir den tomme hjelpenoden min p, lik rotnoden p, ettersom jeg vil at q skal være en uendret "forelder" til p, 
 dette blir viktig senere ettersom variablen p blir endret. 
