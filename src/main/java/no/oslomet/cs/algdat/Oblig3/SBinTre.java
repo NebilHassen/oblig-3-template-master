@@ -1,6 +1,4 @@
 package no.oslomet.cs.algdat.Oblig3;
-
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.StringJoiner;
@@ -83,7 +81,30 @@ public class SBinTre<T> {
     }
 
     public boolean leggInn(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        Node<T> p = rot;
+        Node <T> q = null;
+        int sammenlign = 0;
+        while (p != null) {
+            q = p;
+            sammenlign = comp.compare(verdi, p.verdi);
+            if (sammenlign < 0) { // Slik oppgaven angir: hvis
+                p=p.venstre;
+            }
+            else {
+                p=p.høyre;
+            }
+        }
+
+        p = new Node<>(verdi, q); //Kodesnutten fra linje 97-107, lager en ny node. Denne skiller seg fra kodesnutt i 5.2.1 fordi, det trengs en referanse til forelder for at treet skal ha riktig verdi til hver node.
+        if (q == null) {
+            rot = p; // Denne snutten angir at når q er null, eller tom, så blir rotnoden p.
+        } else if (sammenlign < 0) {
+            q.venstre = p; //her blir venstrebarn til q lik p
+        } else {
+            q.høyre = p; //her blir venstrebarn til q lik p
+        }
+        antall++;
+        return true;
     }
 
     public boolean fjern(T verdi) {
