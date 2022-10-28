@@ -16,9 +16,12 @@ Deretter så endrer jeg på p, og gjør den enten lik p.venstre (til sitt eget b
 til sammenligningen som skjer i comparator() fra Treeset-klassen (gir 0 hvis to objekter er like, -1 hvis høyre er mindre en venstre, og 1 hvis venstre er større enn høyre )
 
 
+Mye av oppgave 2 kommer fra tipset gitt i oppgaven, 5.2.6 oppgave 2 og kodesnutten i boka som heter "inneholder (T verdi)"
+I oppgave 2 så brukte en hjelpevariable teller, som ble intrekmentert etterhvert som compare-metoden i linjene under er oppfylles. 
+Hver sammenligning baserer seg på utfallet av samnlgn eller compare-metoden sitt utfall, der første baserer eg på at sammenligningen ikke oppfylles, og venstrebarnets verdi oppdateres/settes
+Mens andre sammenligning (else setningen) så antass det at sammenlignen har 2 like objekter som sammenlignes, og dermed så intrekmenteres teller med 1. 
 
-
-I oppgave 2 så brukte jeg en ... til å ...
+ 
 
 I oppgave 3 så gikk jeg frem ved å ...
 

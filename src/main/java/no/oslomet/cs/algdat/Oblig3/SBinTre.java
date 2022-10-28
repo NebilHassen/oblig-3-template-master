@@ -84,10 +84,10 @@ public class SBinTre<T> {
         Node<T> p = rot;
         Node <T> q = null;
         int sammenlign = 0;
-        while (p != null) {
+        while (p != null) { // Denne while-løkken setter først forelder noden/referansen q, og deretter oppdaterer rett verdi til henholdsvis høyre- eller venstrebarn etterhvert som utfallet til if-statementet oppfylles
             q = p;
             sammenlign = comp.compare(verdi, p.verdi);
-            if (sammenlign < 0) { // Slik oppgaven angir: hvis
+            if (sammenlign < 0) {
                 p=p.venstre;
             }
             else {
@@ -116,8 +116,19 @@ public class SBinTre<T> {
     }
 
     public int antall(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
-    }
+        Node<T> p = rot;
+        int teller= 0; //Dette er variablen som inkrementeres etterhvert som compare-metoden under er oppfylles.
+
+        while (p != null) {
+            int samnlgn = comp.compare(verdi, p.verdi); //sammenligner verdier og gir oss grunnlaget for å intrementere teller-variablen
+            if (samnlgn < 0) { //Oppdaterer venstrebarn hvis compare-metoden gir oss at verdi < p.verdi
+                p = p.venstre;
+            } else {
+                if (samnlgn == 0) teller++; //Intrementerer teller++, og oppdaterer høyrebarn hvis compare-metoden gir oss at verdi == p.verdi
+                p = p.høyre;
+            }
+        }
+        return teller;}
 
     public void nullstill() {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
