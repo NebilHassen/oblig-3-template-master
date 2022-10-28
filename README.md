@@ -22,7 +22,13 @@ Hver sammenligning baserer seg på utfallet av samnlgn eller compare-metoden sit
 Mens andre sammenligning (else setningen) så antass det at sammenlignen har 2 like objekter som sammenlignes, og dermed så intrekmenteres teller med 1. 
 
  
+Oppgave 3, ser veldig mye ut som eksempel 5.1.7 g) og 5.1.15. c) i boka deler av min løsning er hentet derfra:
+I oppgave 3 så begynte jeg med å teste om parameteren innsatt er null, hvis den var det vil det kastes en exception. 
+Videre så har jeg i en if-else setning først forsøkt å hentet fram et venstrebarn (hver gang metoden kalles), hvis venstrebarnet ikke er null, så peker/"blir" p mot p sitt venstrebarn.
+Hvis p.venstre skulle være null, så skjer det samme bare med p sitt høyrebarn.
 
-I oppgave 3 så gikk jeg frem ved å ...
 
-I oppgave 4 så brukte jeg en ... til å ...
+
+Oppgave 4, ser veldig mye ut som eksempel 5.1.7 g) og 5.1.15. c) 
+Videre så har jeg også brukt 5.1.11 og 5.1.12 i boka deler av min løsning er hentet derfra:
+I oppgave 4 så har jeg satt metoden til å kjøre på verdien p.venstre og p.høyre slik at metoden først tok utagngspunkt i barnet deres ved igangsettelse av oppgave oppgave.

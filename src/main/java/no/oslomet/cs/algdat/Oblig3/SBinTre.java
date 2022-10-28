@@ -1,6 +1,7 @@
 package no.oslomet.cs.algdat.Oblig3;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.NoSuchElementException;
 import java.util.StringJoiner;
 
 public class SBinTre<T> {
@@ -133,17 +134,38 @@ public class SBinTre<T> {
     public void nullstill() {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
-
     private static <T> Node<T> førstePostorden(Node<T> p) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        if (p==null) {throw new NoSuchElementException("p er null!");} // SLik oppgaven angir "vi tar det for gitt at parameteren p ikke er null "
+        while (true) {
+            if (p.venstre != null) { // Hvis venstrebarnet ikke er null
+                p = p.venstre; // Så sett p til å "være"/peke på sitt venstrebarn
+            }
+            else if (p.høyre != null) { //Hvis høyrebarnet ikke er null
+                p = p.høyre; // Så sett p til å peke på sitt høyrebarn
+            } else {
+                return p;
+            }
+        }
     }
-
-    private static <T> Node<T> nestePostorden(Node<T> p) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+    private static <T> Node<T> nestePostorden(Node<T> p) { // stor inspirasjon hentet fra 5.1.15.c, også kommentert dette i README
+        Node<T> f = p.forelder; // Her så angir vi at f er p sin forelder,
+        if (f == null) { // Hvis foreledernoden er null, så return null
+            return null;
+        }
+        if (f != null && (f.høyre == p || f.høyre == null)) { // Hvis f ikke er null og samtidig som at f er sitt høyrebarn er p, mens verdien til barnet er null, så return foreldrenoden
+            return f;
+        } else {
+            return førstePostorden(f.høyre); // else return foreldrenoden sitt høyrebarn (første postordre noden)
+        }
     }
-
     public void postorden(Oppgave<? super T> oppgave) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        Node<T> p = rot; // Her så får noden p, rot som verdi
+        Node<T> forste = førstePostorden(p); // Og vi lager en node som har verdi til førstepostordrenoden til rotnoden gitt over p.
+        oppgave.utførOppgave(forste.verdi);
+        while (forste.forelder != null) {  // Så lenge foreldre til forste noden, (som er førstepostordrenoden til rotnoden gitt over p) ikke er null så
+            forste = nestePostorden(forste); //  Sett noden forste til neste Postordenoden i treet
+            if (forste != null){oppgave.utførOppgave(forste.verdi);}
+        }
     }
 
     public void postordenRecursive(Oppgave<? super T> oppgave) {
@@ -151,7 +173,12 @@ public class SBinTre<T> {
     }
 
     private void postordenRecursive(Node<T> p, Oppgave<? super T> oppgave) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        if (p == null) {
+            return;
+        }
+        postordenRecursive(p.venstre, oppgave);
+        postordenRecursive(p.høyre, oppgave);
+        oppgave.utførOppgave(p.verdi);
     }
 
     public ArrayList<T> serialize() {
